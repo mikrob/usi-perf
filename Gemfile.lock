@@ -1,0 +1,43 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    capistrano (2.15.4)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+    capistrano_colors (0.5.5)
+    deep_merge (1.0.0)
+    erubis (2.7.0)
+    highline (1.6.18)
+    json (1.7.7)
+    master-cap (0.1)
+      capistrano (>= 2)
+      json
+    net-scp (1.1.0)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.7)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
+    peach (0.5.1)
+    railsless-deploy (1.1.0)
+    ruby-libvirt (0.4.0)
+    xml-simple (1.1.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  capistrano
+  capistrano_colors
+  deep_merge
+  erubis
+  json
+  master-cap
+  peach
+  railsless-deploy
+  ruby-libvirt
+  xml-simple

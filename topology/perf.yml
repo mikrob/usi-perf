@@ -1,0 +1,14 @@
+:topology:
+  :app:
+    :hostname: 192.168.65.2
+    :type: linux_chef
+    :roles:
+      - perf-app
+  :db:
+    :hostname: 192.168.65.2
+    :type: linux_chef
+    :roles:
+      - perf-db
+:cap_override:
+:default_role_list:
+  - base_role
