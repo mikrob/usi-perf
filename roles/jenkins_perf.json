@@ -1,0 +1,19 @@
+{
+  "name":"jenkins_perf",
+  "default_attributes":{
+  },
+  "json_class":"Chef::Role",
+  "run_list":[
+    "recipe[jenkins]",
+  ],
+  "chef_type":"role",
+  "override_attributes":{
+    "jenkins" : {
+      "tomcat" : {
+        "env" : {
+          "JAVA_OPTS": "-XX:MaxPermSize=256m -Xmx512m -Xms256m"
+        }
+      }
+    }
+  }
+}
