@@ -1,0 +1,1 @@
+default[:offline_proxy][:app_directory] = "/apps/cw_offline_proxy/"
