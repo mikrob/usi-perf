@@ -3,7 +3,7 @@
     :hostname: app.perf
     :type: linux_chef
     :roles:
-      - perf-app
+      - app_perf
   :jenkins:
     :hostname: jenkins.perf
     :type: linux_chef
