@@ -1,0 +1,13 @@
+{
+  "name":"storage_perf",
+  "default_attributes":{
+  },
+  "json_class":"Chef::Role",
+  "run_list":[
+    "recipe[storage_perf]",
+    "recipe[storage_perf::offline_proxy]"
+  ],
+  "chef_type":"role",
+  "override_attributes":{
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name":"perf_base",
+  "default_attributes":{
+    "bash_users":["root", "chef"],
+    "pic" : {
+       "offline_proxy_opts":"--http_proxy http://192.168.1.6:3128"
+    }
+  },
+  "json_class":"Chef::Role",
+  "run_list":[
+    "recipe[base::system]", // do not install package before this line
+    "recipe[master_chef::chef_solo_scripts]"
+  ],
+  "chef_type":"role",
+  "override_attributes": {
+    "disable_ipv6":true,
+    "timezone":"Europe/Paris",
+    "deploy_user":"deploy"
+  }
+}

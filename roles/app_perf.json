@@ -1,0 +1,19 @@
+{
+  "name":"app_perf",
+  "default_attributes":{
+  },
+  "json_class":"Chef::Role",
+  "run_list":[
+    "role[cw_base_ubuntu]",
+    "role[cw_deploy]",
+    "recipe[cw_iam::webapp]"
+  ],
+  "chef_type":"role",
+  "override_attributes":{
+    "java":{
+      "versions":{
+        "sun_java6":"jdk1.6.0_37_jce"
+      }
+    }
+  }
+}

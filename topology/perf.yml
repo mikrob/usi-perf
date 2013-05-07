@@ -1,14 +1,21 @@
 :topology:
   :app:
-    :hostname: 192.168.65.2
+    :hostname: app.perf
     :type: linux_chef
     :roles:
       - perf-app
-  :db:
-    :hostname: 192.168.65.2
+  :jenkins:
+    :hostname: jenkins.perf
     :type: linux_chef
     :roles:
-      - perf-db
+      - jenkins_perf
+  :storage:
+    :hostname: storage.perf
+    :type: linux_chef
+    :roles:
+      - storage_perf
 :cap_override:
+  :pic:
+    :offline_proxy_opts: "--http_proxy http://192.168.1.6:3128"
 :default_role_list:
-  - base_role
+  - perf_base
