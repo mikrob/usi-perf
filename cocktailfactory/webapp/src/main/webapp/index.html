@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr" ng-app>
+<head>
+    <meta charset="utf-8">
+    <title>Cocktail Factory</title>
+    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="lib/angular/angular.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="CocktailListCtrl">
+<header>
+    <div class="container">
+        <h1>Cocktail Factory</h1>
+    </div>
+</header>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12 well">
+            <h2>Type ingredients</h2>
+            <input ng-model="query">
+
+            <div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12 well">
+            <h2>Cocktails here to please you</h2>
+        </div>
+        <div class="span8 well">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Preparation</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="cocktail in cocktails | filter:myFilter">
+                    <td>{{cocktail.name}}</td>
+                    <td>{{cocktail.preparation}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
