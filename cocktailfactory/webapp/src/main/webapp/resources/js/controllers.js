@@ -2,16 +2,8 @@
 
 /* Controllers */
 
-function WordListCtrl($scope, $http) {
-  $http.get('novlex-base.txt.json').success(function(data) {
-    $scope.words = data;
+function CocktailListCtrl($scope, $http) {
+  $http.get('services/cocktail/filter/' + $scope.query).success(function(data) {
+    $scope.cocktails = data;
   });
-
-  $scope.myFilter = function(word) {
-    if($scope.query == undefined) {
-      return false;
-    }
-    var patt = new RegExp($scope.query);
-    return patt.test(word.w);
-  }
 }

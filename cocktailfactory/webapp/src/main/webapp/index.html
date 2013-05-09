@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="fr" ng-app>
+<html lang="en" ng-app>
 <head>
     <meta charset="utf-8">
     <title>Cocktail Factory</title>
-    <link rel="stylesheet" href="css/app.css"/>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="resources/css/app.css"/>
+    <link rel="stylesheet" href="resources/css/bootstrap.css">
     <script src="resources/lib/angular/angular.js"></script>
     <script src="resources/js/controllers.js"></script>
 </head>
@@ -16,30 +16,23 @@
 </header>
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="span12 well">
+        <div class="span4 well">
             <h2>Type ingredients</h2>
             <input ng-model="query">
-
-            <div>
-            </div>
-        </div>
-    </div>
-    <div class="row-fluid">
-        <div class="span12 well">
-            <h2>Cocktails here to please you</h2>
         </div>
         <div class="span8 well">
+            <h2>Cocktails here to please you</h2>
             <table class="table table-condensed">
                 <thead>
                 <tr>
                     <td>Name</td>
-                    <td>Preparation</td>
+                    <td>Recipe</td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="cocktail in cocktails | filter:myFilter">
+                <tr ng-repeat="cocktail in cocktails | orderBy">
                     <td>{{cocktail.name}}</td>
-                    <td>{{cocktail.preparation}}</td>
+                    <td>{{cocktail.description}}</td>
                 </tr>
                 </tbody>
             </table>
