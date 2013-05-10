@@ -31,7 +31,7 @@ public class CocktailService {
         List<Cocktail> all = list();
         List<Cocktail> result = new ArrayList<>(all.size());
         for(Cocktail c : all) {
-            if(c.getName().indexOf(filter) != -1 || c.getDescription().indexOf(filter) != -1) {
+            if(c.getName().contains(filter) || c.getDescription().contains(filter)) {
                 result.add(c);
             }
         }
