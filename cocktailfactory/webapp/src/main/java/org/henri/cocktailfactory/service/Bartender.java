@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -32,7 +33,25 @@ public class Bartender {
 
             if (cocktails == null) {
                 cocktails = readList();
+
+                // Oh dear, maybe there is a duplicated in the list
+                List<Cocktail> result = new ArrayList<>(cocktails.size());
+                for (int i = 0; i < cocktails.size(); i++) {
+                    boolean duplicate = false;
+                    Cocktail c = cocktails.get(i);
+                    for (int j = i + 1; j < cocktails.size(); j++) {
+                        Cocktail d = cocktails.get(j);
+                        if (c.equals(d)) {
+                            duplicate = true;
+                        }
+                    }
+                    if (!duplicate) {
+                        result.add(c);
+                    }
+                }
+                cocktails = result;
             }
+
             return cocktails;
         } finally {
             if (performanceBean.isBottleneck()) {
@@ -58,6 +77,7 @@ public class Bartender {
                 Cocktail c = new Cocktail(name, description.toString());
                 list.add(c);
             }
+            Collections.sort(list);
             return list;
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -22,9 +22,7 @@ public class CocktailService {
 
     @RequestMapping(value="/list", method= RequestMethod.GET, produces="application/json")
     public @ResponseBody List<Cocktail> list() {
-        List<Cocktail> result = bartender.getAllCocktails();
-        Collections.sort(result);
-        return result;
+        return bartender.getAllCocktails();
     }
 
     @RequestMapping(value="/filter/{filter}", method= RequestMethod.GET, produces="application/json")
