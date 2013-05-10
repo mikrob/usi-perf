@@ -1,5 +1,6 @@
 package org.henri.cocktailfactory.ws;
 
+import org.henri.cocktailfactory.mbean.PerformanceBean;
 import org.henri.cocktailfactory.service.Bartender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
