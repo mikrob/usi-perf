@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -20,12 +21,20 @@ public class CocktailService {
 
     @RequestMapping(value="/list", method= RequestMethod.GET, produces="application/json")
     public @ResponseBody List<Cocktail> list() {
-        return bartender.getAllCocktails();
+        List<Cocktail> result = bartender.getAllCocktails();
+        Collections.sort(result);
+        return result;
     }
 
     @RequestMapping(value="/filter/{filter}", method= RequestMethod.GET, produces="application/json")
     public @ResponseBody List<Cocktail> filter(@PathVariable String filter) {
-        List<Cocktail> result = list();
+        List<Cocktail> all = list();
+        List<Cocktail> result = new ArrayList<>(all.size());
+        for(Cocktail c : all) {
+            if(c.getName().indexOf(filter) != -1 || c.getDescription().indexOf(filter) != -1) {
+                result.add(c);
+            }
+        }
         return result;
     }
 

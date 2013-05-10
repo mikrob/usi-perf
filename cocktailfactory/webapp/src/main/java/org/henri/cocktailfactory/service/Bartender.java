@@ -27,10 +27,13 @@ public class Bartender {
             String line;
             while ((line = in.readLine()) != null) {
                 String name = line;
+                // Skip the next empty line
+                line = in.readLine();
+                // Start reading the description
                 StringBuilder description = new StringBuilder();
                 while ((line = in.readLine()) != null && !line.equals("-------------------------------------------------")) {
                     description.append(line);
-                    description.append("\n");
+                    description.append("<br/>");
                 }
                 Cocktail c = new Cocktail(name, description.toString());
                 list.add(c);

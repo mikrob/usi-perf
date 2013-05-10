@@ -1,6 +1,6 @@
 package org.henri.cocktailfactory.ws;
 
-public class Cocktail {
+public class Cocktail implements Comparable<Cocktail> {
     private String name;
     private String description;
 
@@ -26,5 +26,27 @@ public class Cocktail {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cocktail cocktail = (Cocktail) o;
+
+        if (!name.equals(cocktail.name)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
+    public int compareTo(Cocktail o) {
+        return name.compareTo(o.name);
     }
 }

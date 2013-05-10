@@ -30,9 +30,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="cocktail in cocktails | orderBy">
+                <tr ng-repeat="cocktail in cocktails">
                     <td>{{cocktail.name}}</td>
-                    <td>{{cocktail.description}}</td>
+                    <td><span ng-bind-html-unsafe="cocktail.description"></span></td>
                 </tr>
                 </tbody>
             </table>
