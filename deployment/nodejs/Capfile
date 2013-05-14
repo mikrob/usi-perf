@@ -1,0 +1,41 @@
+require 'railsless-deploy'
+load '../common.rb'
+
+set :application, 'proxy'
+set :scm, :git
+set :repository,  "http://github.com/bpaquet/offline-proxy.git"
+server "storage.perf", :app, :web, :db, :primary => true
+set :user, "deploy"
+set :deploy_to, '/apps/cw_offline_proxy/'
+set :repository_for_local_deployment, '../../../../infra/proxy'
+set :ssh_options, { :forward_agent => true }
+
+set :link_dir, {
+  '/storage' => '/storage',
+}
+
+set :default_environment, env_http_proxy
+
+task :reload_all_git_repos do
+  set :default_environment, {}
+  run "curl --max-time 600 -s -f http://localhost:3128/reload_all_git_repos", :roles => :update_1
+  run "curl --max-time 600 -s -f http://localhost:3128/reload_all_git_repos", :roles => :update_2
+end
+
+
+
+task :node_init, :roles => :app do
+  run "cd #{release_path} && $HOME/.warp/client/node/install.sh", :env => env_http_proxy
+end
+
+task :restart, :roles => :app do
+  run "/etc/init.d/#{application} restart"
+end
+
+after 'deploy:finalize_update', 'node_init'
+
+after 'deploy', 'restart'
+
+task :cleanup do
+  top.deploy.cleanup
+end
