@@ -1,0 +1,20 @@
+require 'railsless-deploy'
+load '../common.rb'
+
+set :application, 'proxy'
+set :scm, :git
+set :repository,  "http://github.com/bpaquet/offline-proxy.git"
+server "storage.perf", :app, :web, :db, :primary => true
+set :user, "deploy"
+set :deploy_to, '/apps/cw_offline_proxy/'
+set :repository_for_local_deployment, '../../../../infra/proxy'
+set :ssh_options, { :forward_agent => true }
+
+set :default_environment, env_http_proxy
+
+task :deploy, :roles => :app do
+
+  run "sudo -u tomcat #{deploy_to}/deploy.sh #{tmp_file} && rm #{tmp_file}"
+  run "[ ! -x #{deploy_to}/http_check.sh ] ||#{deploy_to}/http_check.sh --pattern #{version}"
+  run "echo #{version_id} > #{deploy_to}/REVISION"
+end

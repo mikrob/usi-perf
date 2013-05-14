@@ -1,0 +1,74 @@
+#!/bin/bash
+
+set -e
+
+usage()
+{
+  cat <<EOF
+  Syntax: $0 --pattern pattern
+EOF
+}
+
+pattern=""
+url_timeout="120"
+poll="2"
+url="<%=@url%>"
+
+while [ ! -z "$1" ]
+do
+  case "$1" in
+    --pattern)
+    pattern=$2
+    shift
+    ;;
+    --help)
+    usage
+    exit 0
+    ;;
+    *)
+    usage
+    exit 1
+    ;;
+  esac
+  shift
+done
+
+if [ -z "$pattern" ]
+then
+  echo "--pattern attribute is mandatory"
+  usage
+  exit 1
+fi
+
+now()
+{
+  date +%s
+}
+
+wait_for()
+{
+  local _timeout=$1
+  local _poll=$2
+  shift 2
+  local _maxdate=$(( $(now) + _timeout ))
+  while [[ $(now) < $_maxdate ]]
+  do
+    if eval $@
+    then
+      echo "ok"
+      return 0
+    else
+      echo -n '.'
+    fi
+    sleep $_poll
+  done
+  return 1
+}
+
+echo "Waiting for $url to be available (max ${url_timeout}s) and matching $pattern"
+if ! wait_for $url_timeout $poll "curl -s -f '$url' | grep -q '$pattern'"
+then
+  echo "Timeout wile waiting for url $url matching pattern $pattern to be available" >&2
+  exit 1
+fi
+echo "Done."

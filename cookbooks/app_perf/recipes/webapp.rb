@@ -36,14 +36,14 @@ deploy ALL = (tomcat) NOPASSWD: #{node.app_perf.tomcat.directory}/deploy.sh
 EOF
 end
 
-# template "#{node.cw_iam.tomcat.directory}/deploy.sh" do
-#   owner node.deploy_user
-#   source "deploy.sh.erb"
-#   mode '0755'
-#   variables :war_file => war_file
-# end
+template "/apps/app_webapp/deploy.sh" do
+  owner node.deploy_user
+  source "deploy.sh.erb"
+  mode '0755'
+  variables :war_file => "war_file"
+end
 
-# http_check "#{node.cw_iam.tomcat.directory}/http_check.sh" do
-#   owner node.deploy_user
-#   url "#{get_localhost_url(:iam)}/version"
-# end
+http_check "/apps/app_webapp/http_check.sh" do
+  owner node.deploy_user
+  url "http://localhost:8080/app/version"
+end
