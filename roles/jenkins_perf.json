@@ -1,6 +1,9 @@
 {
   "name":"jenkins_perf",
   "default_attributes":{
+    "jenkins" : {
+      "plugins" : ["git"]
+    }
   },
   "json_class":"Chef::Role",
   "run_list":[
@@ -13,7 +16,8 @@
         "env" : {
           "JAVA_OPTS": "-XX:MaxPermSize=256m -Xmx512m -Xms256m"
         }
-      }
+      },
+      "install_maven" : true
     }
   }
 }
