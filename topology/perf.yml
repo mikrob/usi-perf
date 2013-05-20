@@ -1,16 +1,19 @@
 :topology:
   :app:
     :hostname: app.perf
+    :private_ip: 192.168.56.5
     :type: linux_chef
     :roles:
       - app_perf
   :jenkins:
     :hostname: jenkins.perf
+    :private_ip: 192.168.56.4
     :type: linux_chef
     :roles:
       - jenkins_perf
   :storage:
     :hostname: storage.perf
+    :private_ip: 192.168.56.6
     :type: linux_chef
     :roles:
       - storage_perf
