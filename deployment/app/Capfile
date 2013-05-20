@@ -3,18 +3,30 @@ load '../common.rb'
 
 set :application, 'proxy'
 set :scm, :git
-set :repository,  "http://github.com/bpaquet/offline-proxy.git"
-server "storage.perf", :app, :web, :db, :primary => true
+server "app.perf", :app, :web, :primary => true
 set :user, "deploy"
-set :deploy_to, '/apps/cw_offline_proxy/'
-set :repository_for_local_deployment, '../../../../infra/proxy'
+set :deploy_to, '/apps/app_webapp/'
 set :ssh_options, { :forward_agent => true }
 
 set :default_environment, env_http_proxy
 
-task :deploy, :roles => :app do
+namespace :deploy do
+  task :default do
+    version_url, tmp_file = download_war
+    version = File.basename(version_url).match(/^[^-]+-(.*).war/)[1]
+    puts "Version : #{version}"
+    run "sudo -u tomcat #{deploy_to}/deploy.sh #{tmp_file} && rm #{tmp_file}"
+    run "[ ! -x #{deploy_to}/http_check.sh ] ||#{deploy_to}/http_check.sh --pattern #{version}"
+    run "echo #{version} > #{deploy_to}/REVISION"
+  end
 
-  run "sudo -u tomcat #{deploy_to}/deploy.sh #{tmp_file} && rm #{tmp_file}"
-  run "[ ! -x #{deploy_to}/http_check.sh ] ||#{deploy_to}/http_check.sh --pattern #{version}"
-  run "echo #{version_id} > #{deploy_to}/REVISION"
+
+  def download_war options = {}
+    tmp_file = "/tmp/tmp_#{Time.now.to_i}"
+    url = "http://192.168.56.4/jenkins/job/cocktailfactory_base_build/ws/cocktailfactory/webapp/target/cocktailfactory-1.0-SNAPSHOT.war"
+    puts "URL : #{url}"
+    run "rm -f #{tmp_file} && curl -f -s \"#{url}\" -o \"#{tmp_file}\"", options.merge(:env => env_http_proxy)
+    return url, tmp_file
+  end
+
 end

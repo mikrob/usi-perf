@@ -1,7 +1,10 @@
 default[:app_perf][:tomcat] = {
-  :name => 'app',
+  :name => 'cocktailfactory',
   :env => {
     'JAVA_OPTS' => '-Xmx512m -Xms128m',
   },
-  :directory => '/apps/app_webapp'
+  :directory => '/apps/cocktailfactory'
 }
+
+default[:app_perf][:cocktailfactory][:path] = "/cocktailfactory"
+
