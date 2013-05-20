@@ -28,6 +28,10 @@ task :node_init, :roles => :app do
   run "cd #{release_path} && $HOME/.warp/client/node/install.sh", :env => env_http_proxy
 end
 
+task :node_init, :roles => :app do
+  run "npm install http-proxy", :env => env_http_proxy
+end
+
 task :restart, :roles => :app do
   run "/etc/init.d/#{application} restart"
 end

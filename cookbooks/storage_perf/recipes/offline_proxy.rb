@@ -1,4 +1,3 @@
-
 include_recipe "nodejs"
 
 base_user node.deploy_user
