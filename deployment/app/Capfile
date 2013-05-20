@@ -5,7 +5,7 @@ set :application, 'proxy'
 set :scm, :git
 server "app.perf", :app, :web, :primary => true
 set :user, "deploy"
-set :deploy_to, '/apps/app_webapp/'
+set :deploy_to, '/apps/cocktailfactory/'
 set :ssh_options, { :forward_agent => true }
 
 set :default_environment, env_http_proxy
