@@ -9,7 +9,7 @@ class CocktailFactorySimulation extends Simulation {
   val port = 80
 
   val httpConf = httpConfig
-    .baseURL("http://192.168.56.5:"+port)
+    .baseURL("http://192.168.56.5:"+port + "/cocktailfactory")
     .acceptHeader("application/json, text/plain, */*")
     .acceptCharsetHeader("ISO-8859-1,utf-8;q=0.7,*;q=0.3")
     .acceptEncodingHeader("gzip,deflate,sdch")
