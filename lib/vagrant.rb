@@ -15,6 +15,7 @@ namespace :vagrant do
         "
       %x[mkdir -p vms2/#{hostname}]
       File.open("vms2/#{hostname}/Vagrantfile", 'w') { |file| file.write(vagrant_file_content) }
+      puts "cd vms2/#{hostname} && vagrant up"
     end
   end
 end
