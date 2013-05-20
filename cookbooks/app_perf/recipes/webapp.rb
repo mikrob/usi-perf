@@ -8,11 +8,11 @@ capistrano_app node.app_perf.tomcat.directory do
   user node.deploy_user
 end
 
-war_file = tomcat_instance "cocktailfactory:tomcat" do
+war_file = tomcat_instance "app_perf:tomcat" do
   war_location node.app_perf[:cocktailfactory][:path]
 end
 
-tomcat_app_http_port = tomcat_config("cocktailfactory:tomcat")[:connectors][:http][:port]
+tomcat_app_http_port = tomcat_config("app_perf:tomcat")[:connectors][:http][:port]
 
 nginx_add_default_location "cocktailfactory" do
   content <<-EOF

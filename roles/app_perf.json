@@ -12,9 +12,13 @@
   },
   "json_class":"Chef::Role",
   "run_list":[
+    "recipe[java::java_oracle_java7]",
     "recipe[app_perf::webapp]"
   ],
   "chef_type":"role",
   "override_attributes":{
+    "java" : {
+      "default_version": "oracle_java7"
+    }
   }
 }

@@ -23,7 +23,7 @@ namespace :deploy do
 
   def download_war options = {}
     tmp_file = "/tmp/tmp_#{Time.now.to_i}"
-    url = "http://192.168.56.4/jenkins/job/cocktailfactory_base_build/ws/cocktailfactory/webapp/target/cocktailfactory-1.0-SNAPSHOT.war"
+    url = "http://192.168.56.4/jenkins/job/base_build/ws/cocktailfactory/webapp/target/cocktailfactory-1.0-SNAPSHOT.war"
     puts "URL : #{url}"
     run "rm -f #{tmp_file} && curl -f -s \"#{url}\" -o \"#{tmp_file}\"", options.merge(:env => env_http_proxy)
     return url, tmp_file

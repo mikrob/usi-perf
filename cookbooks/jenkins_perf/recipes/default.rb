@@ -42,7 +42,7 @@ end
 
   template "#{node.jenkins.home}/jobs/#{x}/config.xml" do
     owner node.tomcat.user
-    source "jobs/#{x}.xml"
+    source "jobs/#{x}.xml.erb"
     notifies :restart, resources(:service => "jenkins")
   end
 
