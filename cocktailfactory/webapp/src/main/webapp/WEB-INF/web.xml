@@ -24,11 +24,21 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+    <!-- Just return the application version -->
+    <servlet>
+        <servlet-name>appServlet</servlet-name>
+        <servlet-class> org.henri.cocktailfactory.servlet.VersionServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/version</url-pattern>
+    </servlet-mapping>
 
 	<!-- Disables Servlet Container welcome file handling. Needed for compatibility with Servlet 3.0 and Tomcat 7.0 -->
 	<welcome-file-list>
