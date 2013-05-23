@@ -42,3 +42,13 @@ end
 end
 
 ssh_key_private node.tomcat.user
+
+file "#{node.jenkins.home}/ssh_agent.sh" do
+  mode '0755'
+  owner node.tomcat.user
+  content <<-EOF
+#!/bin/sh -e
+
+ssh-agent /bin/sh -c "ssh-add && $*"
+EOF
+end

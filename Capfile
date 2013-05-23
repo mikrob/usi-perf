@@ -5,7 +5,7 @@ require 'tempfile'
 require 'capistrano_colors'
 require 'deep_merge'
 
-#set :http_proxy, 'http://192.168.56.6:3128'
+set :http_proxy, 'http://192.168.56.6:3128'
 
 Dir["lib/*.rb"].each do |file|
   load file

@@ -3,7 +3,7 @@
   "default_attributes":{
     "bash_users":["root", "chef"],
     "pic" : {
-       "offline_proxy_opts":"--http_proxy http://192.168.1.6:3128"
+       "offline_proxy_opts":""//"--http_proxy http://192.168.1.6:3128"
     }
   },
   "json_class":"Chef::Role",
