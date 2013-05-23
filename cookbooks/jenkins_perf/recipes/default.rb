@@ -1,14 +1,3 @@
-# directory "#{node.jenkins.home}/jobs/#{env}_#{x}" do
-#   owner node.tomcat.user
-# end
-
-# template "#{node.jenkins.home}/jobs/#{env}_#{x}/config.xml" do
-#   owner node.tomcat.user
-#   source "jenkins/jobs/#{x}.xml"
-#   variables config.merge(:target_env => env)
-#   notifies :run, "execute[reload jenkins config]"
-# end
-
 file "#{get_home node.tomcat.user}/.gitconfig" do
   mode '0644'
   owner node.tomcat.user
@@ -34,7 +23,7 @@ directory "#{node.jenkins.home}/jobs" do
 end
 
 
-["base_build"].each do |x|
+["base_build", "gatling_build"].each do |x|
 
   directory "#{node.jenkins.home}/jobs/#{x}" do
     owner node.tomcat.user
@@ -47,3 +36,5 @@ end
   end
 
 end
+
+ssh_key_private node.tomcat.user
