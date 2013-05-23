@@ -1,15 +1,22 @@
-package 'squid'
-package 'elinks'
+base_user "git"
 
-service "squid3" do
+service "ssh" do
   supports :restart => true
   action auto_compute_action
 end
 
-template '/etc/squid3/squid.conf' do
-  source "squid.conf.erb"
+template "/etc/ssh/ssh_host_ecdsa_key" do
+  source "ssh_host_ecdsa_key.erb"
+  owner 'root'
+  group 'root'
+  mode '0600'
+  notifies :restart, "service[ssh]"
+end
+
+template "/etc/ssh/ssh_host_ecdsa_key.pub" do
+  source "ssh_host_ecdsa_key.pub.erb"
   owner 'root'
   group 'root'
   mode '0644'
-  notifies :restart, resources(:service => "squid3")
+  notifies :restart, "service[ssh]"
 end

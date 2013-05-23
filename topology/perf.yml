@@ -19,6 +19,6 @@
       - storage_perf
 :cap_override:
   :pic:
-    :offline_proxy_opts: "--http_proxy http://192.168.1.6:3128"
+    :offline_proxy_opts: "--no_proxy"
 :default_role_list:
   - perf_base
