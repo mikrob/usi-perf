@@ -16,27 +16,16 @@ set :link_dir, {
 
 set :default_environment, env_http_proxy
 
-task :reload_all_git_repos do
-  set :default_environment, {}
-  run "curl --max-time 600 -s -f http://localhost:3128/reload_all_git_repos", :roles => :update_1
-  run "curl --max-time 600 -s -f http://localhost:3128/reload_all_git_repos", :roles => :update_2
-end
-
-
 
 task :node_init, :roles => :app do
-  run "cd #{release_path} && $HOME/.warp/client/node/install.sh", :env => env_http_proxy
-end
-
-task :node_init, :roles => :app do
-  run "npm install http-proxy", :env => env_http_proxy
+  run "/home/deploy/.nvm/nvm.sh && nvm use 0.8", :env => env_http_proxy
 end
 
 task :restart, :roles => :app do
   run "/etc/init.d/#{application} restart"
 end
 
-after 'deploy:finalize_update', 'node_init'
+#after 'deploy:finalize_update', 'node_init'
 
 after 'deploy', 'restart'
 
