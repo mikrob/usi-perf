@@ -10,10 +10,6 @@ set :deploy_to, '/apps/cw_offline_proxy/'
 set :repository_for_local_deployment, '../../../../infra/proxy'
 set :ssh_options, { :forward_agent => true }
 
-set :link_dir, {
-  '/storage' => '/storage',
-}
-
 set :default_environment, env_http_proxy
 
 task :node_init, :roles => :app do
@@ -24,9 +20,13 @@ task :restart, :roles => :app do
   run "/etc/init.d/#{application} restart"
 end
 
+task :symlinks do
+	run "ln -s #{shared_path}/storage /apps/cw_offline_proxy/current/storage"
+end
+
 after 'deploy:finalize_update', 'node_init'
 
-after 'deploy', 'restart'
+after 'deploy', 'symlinks','restart'
 
 task :cleanup do
   top.deploy.cleanup
