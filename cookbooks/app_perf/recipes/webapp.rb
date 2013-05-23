@@ -45,5 +45,5 @@ end
 
 http_check "/apps/cocktailfactory/http_check.sh" do
   owner node.deploy_user
-  url "http://localhost:8080/cocktailfactory/version"
+  url "http://localhost/cocktailfactory/version"
 end
