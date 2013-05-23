@@ -1,3 +1,7 @@
+warp_install node.tomcat.user do
+  rbenv true
+end
+
 file "#{get_home node.tomcat.user}/.gitconfig" do
   mode '0644'
   owner node.tomcat.user
