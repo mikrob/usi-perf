@@ -16,16 +16,15 @@ set :link_dir, {
 
 set :default_environment, env_http_proxy
 
-
 task :node_init, :roles => :app do
-  run "/home/deploy/.nvm/nvm.sh && nvm use 0.8", :env => env_http_proxy
+  run "export HOME=/home/deploy && cd #{release_path} && NO_WARP=1 $HOME/.warp/client/node/install.sh"
 end
 
 task :restart, :roles => :app do
   run "/etc/init.d/#{application} restart"
 end
 
-#after 'deploy:finalize_update', 'node_init'
+after 'deploy:finalize_update', 'node_init'
 
 after 'deploy', 'restart'
 

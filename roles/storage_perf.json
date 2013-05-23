@@ -12,7 +12,6 @@
   },
   "json_class":"Chef::Role",
   "run_list":[
-    "recipe[warp]",
     "recipe[storage_perf]",
     "recipe[storage_perf::offline_proxy]"
   ],

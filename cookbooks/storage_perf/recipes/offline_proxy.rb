@@ -1,6 +1,11 @@
+include_recipe "warp"
 include_recipe "nodejs"
 
 base_user node.deploy_user
+
+warp_install node.deploy_user do
+  nvm true
+end
 
 nodejs_app "proxy" do
   user node.deploy_user
