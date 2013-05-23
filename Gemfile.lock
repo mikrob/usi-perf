@@ -1,3 +1,11 @@
+GIT
+  remote: http://github.com/bpaquet/master-cap.git
+  revision: 879d6dff56d7f588b0cb45e1e838bd24feb81a4b
+  specs:
+    master-cap (0.1)
+      capistrano (>= 2)
+      json
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -12,10 +20,7 @@ GEM
     erubis (2.7.0)
     highline (1.6.19)
     json (1.8.0)
-    master-cap (0.1)
-      capistrano (>= 2)
-      json
-    net-scp (1.1.0)
+    net-scp (1.1.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
@@ -36,7 +41,7 @@ DEPENDENCIES
   deep_merge
   erubis
   json
-  master-cap
+  master-cap!
   peach
   railsless-deploy
   ruby-libvirt
