@@ -127,5 +127,5 @@ class CocktailFactorySimulation extends Simulation {
 
   setUp(scn.users(200).ramp(5 milliseconds).protocolConfig(httpConf))
 
-  assertThat(global.responseTime.mean.lessThan(50))
+  assertThat(global.responseTime.mean.lessThan(100))
 }

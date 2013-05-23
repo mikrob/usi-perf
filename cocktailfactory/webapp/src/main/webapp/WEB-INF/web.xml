@@ -26,7 +26,7 @@
 	</servlet>
     <!-- Just return the application version -->
     <servlet>
-        <servlet-name>appServlet</servlet-name>
+        <servlet-name>versionServlet</servlet-name>
         <servlet-class> org.henri.cocktailfactory.servlet.VersionServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
@@ -36,7 +36,7 @@
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
     <servlet-mapping>
-        <servlet-name>appServlet</servlet-name>
+        <servlet-name>versionServlet</servlet-name>
         <url-pattern>/version</url-pattern>
     </servlet-mapping>
 
