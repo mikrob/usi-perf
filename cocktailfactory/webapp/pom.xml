@@ -108,7 +108,7 @@
                 <version>2.1</version>
                 <configuration>
                     <port>9090</port>
-                    <path>/</path>
+                    <path>/cocktailfactory</path>
                 </configuration>
             </plugin>
             <plugin>
