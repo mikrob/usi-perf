@@ -28,7 +28,7 @@ class CocktailFactorySimulation extends Simulation {
   )
 
   val scn = scenario("Search cocktail")
-    .repeat(5) {
+    .during(20) {
       exec(http("home")
         .get("/")
         .headers(headers_13)
@@ -128,5 +128,5 @@ class CocktailFactorySimulation extends Simulation {
 
   setUp(scn.users(50).ramp(5 milliseconds).protocolConfig(httpConf))
 
-  assertThat(global.responseTime.mean.lessThan(600))
+  assertThat(global.responseTime.mean.lessThan(500))
 }
