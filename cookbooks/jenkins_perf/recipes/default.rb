@@ -12,6 +12,12 @@ file "#{get_home node.tomcat.user}/.gitconfig" do
   EOF
 end
 
+template "#{node.maven.home}/apache-maven-#{node.maven.version}/conf/settings.xml" do
+    owner node.tomcat.user
+    group node.tomcat.user
+    source "maven_settings.xml.erb"
+end
+
 
 ["config.xml"].each do |x|
   template "#{node.jenkins.home}/#{x}" do
