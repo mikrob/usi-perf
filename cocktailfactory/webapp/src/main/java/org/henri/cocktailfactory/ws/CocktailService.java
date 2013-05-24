@@ -1,17 +1,16 @@
 package org.henri.cocktailfactory.ws;
 
-import org.henri.cocktailfactory.mbean.PerformanceBean;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.henri.cocktailfactory.service.Bartender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 @Controller
 @RequestMapping("cocktail/*")
