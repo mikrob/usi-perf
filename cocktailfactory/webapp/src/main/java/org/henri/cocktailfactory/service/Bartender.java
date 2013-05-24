@@ -53,7 +53,7 @@ public class Bartender {
 
                 // Sleep to help debugging (TO REMOVE LATER)
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(10);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
