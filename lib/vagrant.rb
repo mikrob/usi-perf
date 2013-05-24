@@ -11,6 +11,7 @@ namespace :vagrant do
           config.vm.box =\"precise64\"
           config.vm.network :hostonly, \"#{private_ip}\"
           config.vm.host_name = \"#{hostname}\"
+          config.vm.customize [\"modifyvm\", :id, \"--memory\", 1024]
         end
         "
       %x[mkdir -p vms2/#{hostname}]
