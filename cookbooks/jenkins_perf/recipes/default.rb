@@ -12,13 +12,14 @@ file "#{get_home node.tomcat.user}/.gitconfig" do
   EOF
 end
 
+# we set maven to use storage offline proxy
 template "#{node.maven.home}/apache-maven-#{node.maven.version}/conf/settings.xml" do
     owner node.tomcat.user
     group node.tomcat.user
     source "maven_settings.xml.erb"
 end
 
-
+# jenkins configuration (add jdk7 for example)
 ["config.xml"].each do |x|
   template "#{node.jenkins.home}/#{x}" do
     owner node.tomcat.user
@@ -28,11 +29,16 @@ end
   end
 end
 
+# say ok to storage ssh key for user tomcat
+ssh_accept_host_key "git@192.168.56.6" do
+  user node.tomcat.user
+end
+
 directory "#{node.jenkins.home}/jobs" do
   owner node.tomcat.user
 end
 
-
+# create jobs in jenkins
 ["base_build", "gatling_build"].each do |x|
 
   directory "#{node.jenkins.home}/jobs/#{x}" do
