@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 public class PerformanceBean {
 
     private boolean bottleneck = true;
+    
 
     @ManagedAttribute(description="Is bottleneck on?")
     public boolean isBottleneck() {
