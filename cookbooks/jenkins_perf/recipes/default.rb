@@ -39,8 +39,8 @@ directory "#{node.jenkins.home}/jobs" do
 end
 
 # create jobs in jenkins
-["base_build", "gatling_build"].each do |x|
-
+["base_build"].each do |x|
+#["base_build", "gatling_build"].each do |x|
   directory "#{node.jenkins.home}/jobs/#{x}" do
     owner node.tomcat.user
   end
