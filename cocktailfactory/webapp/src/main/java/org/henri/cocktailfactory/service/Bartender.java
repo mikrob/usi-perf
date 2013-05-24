@@ -50,6 +50,13 @@ public class Bartender {
                     }
                 }
                 cocktails = result;
+
+                // Sleep to help debugging (TO REMOTE LATER)
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
             return cocktails;
