@@ -51,7 +51,7 @@ public class Bartender {
                 }
                 cocktails = result;
 
-                // Sleep to help debugging (TO REMOTE LATER)
+                // Sleep to help debugging (TO REMOVE LATER)
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
