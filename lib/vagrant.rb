@@ -4,6 +4,7 @@ namespace :vagrant do
     TOPOLOGY[env.to_s][:topology].each do |node|
       hostname = TOPOLOGY[env.to_s][:topology][node[0]][:hostname]
       private_ip = TOPOLOGY[env.to_s][:topology][node[0]][:private_ip]
+      memory = TOPOLOGY[env.to_s][:topology][node[0]][:memory]
       vagrant_file_content = "
         # -*- mode: ruby -*-
         # vi: set ft=ruby :
@@ -11,7 +12,7 @@ namespace :vagrant do
           config.vm.box =\"precise64\"
           config.vm.network :hostonly, \"#{private_ip}\"
           config.vm.host_name = \"#{hostname}\"
-          config.vm.customize [\"modifyvm\", :id, \"--memory\", 1024]
+          config.vm.customize [\"modifyvm\", :id, \"--memory\", #{memory}]
         end
         "
       %x[mkdir -p vms2/#{hostname}]
