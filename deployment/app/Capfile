@@ -3,7 +3,7 @@ load '../common.rb'
 
 set :application, 'proxy'
 set :scm, :git
-server "app.perf", :app, :web, :primary => true
+server "192.168.56.5", :app, :web, :primary => true
 set :user, "deploy"
 set :deploy_to, '/apps/cocktailfactory/'
 set :ssh_options, { :forward_agent => true }
