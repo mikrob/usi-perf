@@ -42,7 +42,7 @@ end
 
 # create jobs in jenkins
 #["base_build"].each do |x|
-["base_build", "gatling_build", "deploy_last_build"].each do |x|
+["base_build", "gatling_build", "deploy_last_build", "full_perf_build"].each do |x|
   directory "#{node.jenkins.home}/jobs/#{x}" do
     owner node.tomcat.user
   end
