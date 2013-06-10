@@ -54,7 +54,7 @@ rbenv warp install-ruby
 gem list | grep bundler || (gem install bundle &amp;&amp; (rbenv rehash || true))
 bundle
 cd deployment/app
-cap deploy</command>
+bundle exec cap deploy</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
