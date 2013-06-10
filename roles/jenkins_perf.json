@@ -16,7 +16,7 @@
           "JAVA_OPTS": "-XX:MaxPermSize=256m -Xmx512m -Xms256m"
         }
       },
-      "plugins" : ["git", "git-client", "greenballs", "parameterized-trigger"],
+      "plugins" : ["git", "git-client", "greenballs", "parameterized-trigger", "envinject","jenkins-multijob-plugin"],
       "install_maven" : true
     },
     "additional_packages":[
