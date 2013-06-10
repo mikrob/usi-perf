@@ -18,6 +18,22 @@
       },
       "plugins" : ["git", "git-client", "greenballs"],
       "install_maven" : true
-    }
+    },
+    "additional_packages":[
+      "uuid-runtime",
+      "build-essential",
+      "zlib1g-dev",
+      "libssl-dev",
+      "libreadline6-dev",
+      "libxml2-dev",
+      "libxslt-dev",
+      "ncurses-dev",
+      "libtool",
+      "libldap2-dev",
+      "dpkg-dev",
+      "libdb4.8-dev",
+      "libcrack2-dev",
+      "make"
+    ]
   }
 }

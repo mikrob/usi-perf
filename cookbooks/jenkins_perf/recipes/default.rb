@@ -1,3 +1,5 @@
+base_user node.tomcat.user
+
 warp_install node.tomcat.user do
   rbenv true
 end
@@ -20,7 +22,7 @@ template "#{node.maven.home}/apache-maven-#{node.maven.version}/conf/settings.xm
 end
 
 # jenkins configuration (add jdk7 for example)
-["config.xml"].each do |x|
+["config.xml", "hudson.tasks.Shell.xml"].each do |x|
   template "#{node.jenkins.home}/#{x}" do
     owner node.tomcat.user
     group node.tomcat.user
@@ -39,8 +41,8 @@ directory "#{node.jenkins.home}/jobs" do
 end
 
 # create jobs in jenkins
-["base_build"].each do |x|
-#["base_build", "gatling_build"].each do |x|
+#["base_build"].each do |x|
+["base_build", "gatling_build", "deploy_last_build"].each do |x|
   directory "#{node.jenkins.home}/jobs/#{x}" do
     owner node.tomcat.user
   end
