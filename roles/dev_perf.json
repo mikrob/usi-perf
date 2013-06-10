@@ -1,0 +1,22 @@
+{
+  "name":"dev_perf",
+  "default_attributes":{
+    "ssh_keys":{
+      "deploy":{
+        "users":["deploy", "chef"],
+        "keys":[
+          "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAtfWGk8lSEIbwvXSBvK8osch/eU7Uwdq5GsXOihKM5OsxN0VTrmVYro/eL/2fwdTlbgOxYF8bMlgY8EA/IngzxwmMfUpTk2mZ1p6+ScgQI6EVOM4YVvNEcaI2ZvXhnJxm21XQX1Aeh4EwcXac/e6FyT/f32TG+V5eQdE+VhE7iIVxCF/wCUBPDcRnRsbohNRDcaJ8kIM6+rflwU5XozaAOIow8Y/kDDzKZVEBK9LulY9HskLaiuxxI72XW5DnAzoAcbkmw3df9Ve21qFtXY6+ClKfnc2pL+HnrgjPtWa6P/gghEByXsDVFCARu69g3CYrweCsDrSgWU50EsvthxSdZQ== octo-mro@octo-mro-laptop",
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgErCuCXVyyylhjolgxu4NdzB1ziCXtgynPcXeDZH7VJ8KMD6hq2XFp6FPx2Rwj1c4Y3PuQuye7/uN/PErb3H+10UxldARqgiB4jtcQxJUNsLTxq+mxyVyf4xE1Q3tm0SqnURK4KemDVhdeiTFkp4xNX4PbExKVbgAN49buvuFuZf1IkzypSmI7LhnOwizka+6D0FoQpVLXTxkl20ylFhgbFGWhihgzroQPRpZPLAgWpHw6k7pmIu7LQrBNMCE2INeq87ijCusfJOFxxof2FicYyiEUNwKgzUgnYcp48eLGwyF/msVTiPe2b6JMTOR1h64wDgTEqixNbrhj7GcGgn/ tomcat@precise64"
+        ]
+      }
+    }
+  },
+  "json_class":"Chef::Role",
+  "run_list":[
+    "recipe[logrotate]",
+    "recipe[dev_perf]"
+  ],
+  "chef_type":"role",
+  "override_attributes":{
+  }
+}
