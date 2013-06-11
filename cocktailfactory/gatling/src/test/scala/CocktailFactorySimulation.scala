@@ -10,7 +10,7 @@ class CocktailFactorySimulation extends Simulation {
   val server = System.getProperty("server.host")
 
   val httpConf = httpConfig
-    .baseURL("http://"+server+":"+port + "/cocktailfactory")
+    .baseURL("http://"+server+":" + port + "/cocktailfactory")
     .acceptHeader("application/json, text/plain, */*")
     .acceptCharsetHeader("ISO-8859-1,utf-8;q=0.7,*;q=0.3")
     .acceptEncodingHeader("gzip,deflate,sdch")
@@ -28,7 +28,7 @@ class CocktailFactorySimulation extends Simulation {
   )
 
   val scn = scenario("Search cocktail")
-    .during(20) {
+    .during(15) {
       exec(http("home")
         .get("/")
         .headers(headers_13)
@@ -96,7 +96,7 @@ class CocktailFactorySimulation extends Simulation {
       )
     }
 
-  setUp(scn.users(50).ramp(5 milliseconds).protocolConfig(httpConf))
+  setUp(scn.users(30).ramp(5 milliseconds).protocolConfig(httpConf))
 
   assertThat(global.responseTime.mean.lessThan(300))
 }
