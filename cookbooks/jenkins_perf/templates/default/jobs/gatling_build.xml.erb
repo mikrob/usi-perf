@@ -81,7 +81,12 @@
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers/>
+  <publishers>
+    <com.excilys.ebi.gatling.jenkins.GatlingPublisher plugin="gatling@1.0.3">
+      <enabled>true</enabled>
+      <project class="maven2-moduleset" reference="../../.."/>
+    </com.excilys.ebi.gatling.jenkins.GatlingPublisher>
+  </publishers>
   <buildWrappers/>
   <prebuilders/>
   <postbuilders/>
