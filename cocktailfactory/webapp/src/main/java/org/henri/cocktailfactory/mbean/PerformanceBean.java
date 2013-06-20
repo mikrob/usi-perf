@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @ManagedResource(objectName="bean:name=performanceBean", description="Used to toggle performance bottlenecks")
 public class PerformanceBean {
 
-    private boolean bottleneck = true;
-    
+    private boolean bottleneck = false;
+  
 
     @ManagedAttribute(description="Is bottleneck on?")
     public boolean isBottleneck() {
